@@ -7,23 +7,21 @@ class Utils {
 
     static String takeUserInput() {
         Scanner in = new Scanner(System.in);
-        if (programBody.getName() == null) {
-            System.out.print("Input command:  ");
+        System.out.print("Input command:  ");
+        programBody.setName(in.next());
+
+        while (!validProgramName(programBody.getName())) {
+            System.out.println("Avaliable command: exit, text");
             programBody.setName(in.next());
 
-            while (!validProgramName(programBody.getName())) {
-                System.out.println("Avaliable command: exit, text");
-                programBody.setName(in.next());
-
-            }
-            in.close();
-            System.out.println("Command Name: " + programBody.getName());
-            return programBody.getName();
         }
-        System.out.print("Input some text:  ");
-        String someText = in.next();
+        System.out.println("Command Name: " + programBody.getName());
+        if (programBody.getName().equals("text")) {
+            System.out.print("Input some text:  ");
+            System.out.println(in.next());
+        }
         in.close();
-        return someText;
+        return programBody.getName();
     }
 
     private static boolean validProgramName(String name) {

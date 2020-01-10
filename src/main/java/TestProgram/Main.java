@@ -8,9 +8,5 @@ public class Main {
 
 //        programBody.setName("text");
         Utils.takeUserInput();
-        if(
-        programBody.getName().equals("text")){
-            System.out.println(Utils.takeUserInput());
-        }
     }
 }
