@@ -2,19 +2,26 @@ package TestProgram;
 
 import java.util.Scanner;
 
- class Utils {
-     static String takeUserInput() {
+class Utils {
+    static ProgramBody programBody = new ProgramBody();
+
+    static String takeUserInput() {
         Scanner in = new Scanner(System.in);
-        System.out.print("Input main command: ");
-        String commandName = in.next();
-        while(!validProgramName(commandName)){
+        System.out.print("Input command:  ");
+        programBody.setName(in.next());
+
+        while (!validProgramName(programBody.getName())) {
             System.out.println("Avaliable command: exit, text");
-            commandName = in.next();
+            programBody.setName(in.next());
 
         }
+        System.out.println("Command Name: " + programBody.getName());
+        if (programBody.getName().equals("text")) {
+            System.out.print("Input some text:  ");
+            System.out.println(in.next());
+        }
         in.close();
-        System.out.println("Command Name: " + commandName);
-        return commandName;
+        return programBody.getName();
     }
 
     private static boolean validProgramName(String name) {
